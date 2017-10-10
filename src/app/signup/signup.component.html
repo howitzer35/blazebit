@@ -1,6 +1,34 @@
 <ol class="breadcrumb">
   <li class="active">Sign Up</li>
 </ol>
-<p>
-  signup works!
-</p>
+
+<div class="figure">
+  <img src="/assets/clock.png" height="500" width="500">
+</div>
+<!-- <div class="content">
+  <div class="error">{{ error }}</div>
+  <div class="form-line">
+    <input type="text" placeholder="username" name="username" [(ngModel)]="username">
+  </div>
+  <div class="form-line">
+    <input type="password" placeholder="password" name="password"  [(ngModel)]="password">
+  </div>
+</div>
+<div class="actions">
+  <button class="cta" [disabled]="disableButton" (click)="submitSignup()">Register!</button>
+</div> -->
+
+<form novalidate (ngSubmit)="saveRegisterForm(SignupForm)" #SignupForm="ngForm" class="form-horizontal">
+  <input type="text" name="username" [(ngModel)]="username">
+  <input type="password" name="password" [(ngModel)]="password">
+
+  <!-- submit button -->
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<br>
+<br>
+<br>
