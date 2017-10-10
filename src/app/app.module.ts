@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
+import { RouterModule }   from '@angular/router';
+import { HttpModule } from '@angular/http';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -14,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { DetailsComponent } from './details/details.component';
 import { CompletedComponent } from './completed/completed.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
+import { AppRoutingModule } from './routing/routing.module';
 
 @NgModule({
   declarations: [
@@ -30,9 +35,13 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     DetailsComponent,
     CompletedComponent,
     WishlistComponent
+    
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    HttpModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
