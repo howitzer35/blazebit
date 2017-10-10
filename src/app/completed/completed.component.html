@@ -1,9 +1,36 @@
 <ol class="breadcrumb">
   <li class="active">Completed</li>
 </ol>
-<p>
-completed works!
-</p>
+
+<h2>Completed Hikes</h2>
+
+<br>
+<br>
+
+
+<table class="table table-striped table-bordered" id="dataTable" style="width:100%">
+  <thead>
+    <tr>
+      <th>Hike Name</th>
+      <th>Distance</th>
+      <th>Completion Date</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hike of hikes">
+      <td>{{hike.hike_name}}</td>
+      <td>{{hike.distance}}</td>
+      <td>{{hike.date}}</td>
+      <td class="text-center">
+        <a class="btn btn-primary" [routerLink]="['/completed/edit/', hike.hike_name]">Edit</a>&nbsp;
+        <button (click)="deleteHike(hike.hike_name)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
 
 
 
