@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { DetailsComponent } from './details/details.component';
 import { CompletedComponent } from './completed/completed.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { AppRoutingModule } from './routing/routing.module';
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -35,15 +37,17 @@ import { AppRoutingModule } from './routing/routing.module';
     DetailsComponent,
     CompletedComponent,
     WishlistComponent
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
