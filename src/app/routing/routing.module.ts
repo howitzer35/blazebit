@@ -34,13 +34,15 @@ import { RouterModule, Routes } from '@angular/router';
    // details routes
    { path: 'details',  component: DetailsComponent },
    // hike routes
-   { path: 'routes',  component: HikeComponent },
+   { path: 'hike',  component: HikeComponent },
    // login routes
    { path: 'login',  component: LoginComponent },
    // signup routes
    { path: 'signup',  component: SignupComponent },
    // wishlist routes
    { path: 'wishlist',  component: WishlistComponent },
+   // profile routes
+   { path: 'profile',  component: ProfileComponent },
    
  ];
   
