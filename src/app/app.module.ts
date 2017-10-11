@@ -21,6 +21,7 @@ import { CompletedComponent } from './completed/completed.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { AppRoutingModule } from './routing/routing.module';
 import { DataService } from './data.service';
+import { StatusMessageComponent } from './status-message/status-message.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { DataService } from './data.service';
     ProfileComponent,
     DetailsComponent,
     CompletedComponent,
-    WishlistComponent
+    WishlistComponent,
+    StatusMessageComponent,
   ],
   imports: [
     BrowserModule,

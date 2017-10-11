@@ -74,9 +74,31 @@ export class DataService {
                 }
             }
         }
-
         return Observable.throw(errMsg);
     }
 
+    // checkNameNotTaken(Response, username: string) {
+    //     if (typeof Response != username)
+    //         errMsg = error._body
+    //     }else{
+    //         if (error instanceof Response) {
+    //             if(error.status === 0){
+    //                 errMsg = "Error connecting to API"
+    // }
+        
+
+
+
+    // checkNameNotTaken(endpoint: string, username: string) {
+    //     let apiUrl = this.baseUrl+endpoint; 
+    //     return this.http.get(apiUrl)
+    //       .get('assets/users.json')
+    //       .delay(1000)
+    //       .map(res => res.json())
+    //       .map(users => users.filter(user => user.username === username))
+    //       .map(users => !users.length);
+    //   }
+
+    //come back after lunch and reconfigure this to check the error status, not the actual user DB 
 
 }

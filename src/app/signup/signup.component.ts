@@ -18,6 +18,8 @@ export class SignupComponent implements OnInit {
 
   successMessage: string;
   errorMessage: string;
+  username: string = '';
+  password: string = '';
 
   signUpData: object;
 
@@ -48,9 +50,5 @@ export class SignupComponent implements OnInit {
   }
 
 }
-
-
-
-
 
 
