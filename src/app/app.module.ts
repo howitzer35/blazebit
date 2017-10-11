@@ -16,11 +16,11 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { HikeComponent } from './hike/hike.component';
 import { ProfileComponent } from './profile/profile.component';
-import { DetailsComponent } from './details/details.component';
 import { CompletedComponent } from './completed/completed.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { AppRoutingModule } from './routing/routing.module';
 import { DataService } from './data.service';
+import { FunFastUserService } from './fun-fast-user/fun-fast-user.service';
 import { StatusMessageComponent } from './status-message/status-message.component';
 
 @NgModule({
@@ -35,7 +35,6 @@ import { StatusMessageComponent } from './status-message/status-message.componen
     LoginComponent,
     HikeComponent,
     ProfileComponent,
-    DetailsComponent,
     CompletedComponent,
     WishlistComponent,
     StatusMessageComponent,
@@ -48,7 +47,8 @@ import { StatusMessageComponent } from './status-message/status-message.componen
     HttpClientModule
   ],
   providers: [
-    DataService
+    DataService,
+    FunFastUserService
   ],
   bootstrap: [AppComponent]
 })

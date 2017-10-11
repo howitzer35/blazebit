@@ -4,7 +4,6 @@ import { Component, Input } from '@angular/core';
 import { AboutUsComponent } from './about-us/about-us.component'
 import { CompletedComponent } from './completed/completed.component'
 import { ContactUsComponent } from './contact-us/contact-us.component'
-import { DetailsComponent } from './details/details.component'
 import { FooterComponent } from './footer/footer.component'
 import { HikeComponent } from './hike/hike.component'
 import { LoginComponent } from './login/login.component'

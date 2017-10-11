@@ -7,6 +7,8 @@ import 'rxjs/add/operator/catch';
 // be stuff
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
+import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-signup',
@@ -25,10 +27,10 @@ export class SignupComponent implements OnInit {
 
 
   constructor(
-    private dataService: DataService,
     private route: ActivatedRoute,
     private location: Location,
-    private http: Http
+    private http: Http,
+    private funFastUserService: FunFastUserService
   ) {}
 
   ngOnInit() {
@@ -40,15 +42,18 @@ export class SignupComponent implements OnInit {
 
   saveRegisterForm(signUpData: NgForm){
     console.log(signUpData.value);
-    
-    this.dataService.addRecord("users/new", signUpData.value)
-      .subscribe(
-        signUpData => this.successMessage = "Record added succesfully",
-        error =>  this.errorMessage = <any>error
-      );
+
+    this.funFastUserService
+      .signup(signUpData.value.username, signUpData.value.password)
+      .subscribe(user => this.handleSuccessfulSignup(user));
     this.signUpData = {};
   }
 
-}
+  private handleSuccessfulSignup(user: User) {
+    this.successMessage = "User account created successfully";
+  }
 
+
+
+}
 
