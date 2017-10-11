@@ -19,8 +19,8 @@
 </div> -->
 
 <form novalidate (ngSubmit)="saveRegisterForm(SignupForm)" #SignupForm="ngForm" class="form-horizontal">
-  <input type="text" name="username" [(ngModel)]="username">
-  <input type="password" name="password" [(ngModel)]="password">
+  <input type="text" name="username" [(ngModel)]="username" placeholder="User Name">
+  <input type="password" name="password" [(ngModel)]="password" placeholder=" Password">
 
   <!-- submit button -->
   <div class="form-group">
