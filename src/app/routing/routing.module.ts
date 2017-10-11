@@ -9,7 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
  //contact-us imports
  import { ContactUsComponent }   from '../contact-us/contact-us.component';
  //details imports
- import { DetailsComponent }   from '../details/details.component';
  //hike imports
  import { HikeComponent }   from '../hike/hike.component';
  //login imports
@@ -32,7 +31,6 @@ import { RouterModule, Routes } from '@angular/router';
    // contact-us routes
    { path: 'contact-us',  component: ContactUsComponent },
    // details routes
-   { path: 'details',  component: DetailsComponent },
    // hike routes
    { path: 'hike',  component: HikeComponent },
    // login routes

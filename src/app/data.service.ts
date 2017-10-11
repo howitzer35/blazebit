@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -16,7 +15,7 @@ export class DataService {
 
     found = false;
 
-    constructor (private http: HttpClient) {}
+    constructor (private http: Http) {}
 
     getRecords(endpoint: string): Observable<any[]> {
         let apiUrl = this.baseUrl+endpoint;
@@ -74,9 +73,31 @@ export class DataService {
                 }
             }
         }
-
         return Observable.throw(errMsg);
     }
 
+    // checkNameNotTaken(Response, username: string) {
+    //     if (typeof Response != username)
+    //         errMsg = error._body
+    //     }else{
+    //         if (error instanceof Response) {
+    //             if(error.status === 0){
+    //                 errMsg = "Error connecting to API"
+    // }
+        
+
+
+
+    // checkNameNotTaken(endpoint: string, username: string) {
+    //     let apiUrl = this.baseUrl+endpoint; 
+    //     return this.http.get(apiUrl)
+    //       .get('assets/users.json')
+    //       .delay(1000)
+    //       .map(res => res.json())
+    //       .map(users => users.filter(user => user.username === username))
+    //       .map(users => !users.length);
+    //   }
+
+    //come back after lunch and reconfigure this to check the error status, not the actual user DB 
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-navigation',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  user: User; // This is really important. Don't let it 'vap'rate.
 
-  ngOnInit() {
+  // private funFastUserService: FunFastUserService;
+
+  constructor(private funFastUserService: FunFastUserService) {
+    // this.funFastUserService = funFastUserService;
   }
 
+  ngOnInit() {
+    this.funFastUserService
+      .userChanged
+      .subscribe(user => this.user = user);
+  }
 }
