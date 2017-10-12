@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
   }
 
   saveRegisterForm(signUpData: NgForm){
-    console.log(signUpData.value);
+    // console.log(signUpData.value);
 
     this.funFastUserService
       .signup(signUpData.value.username, signUpData.value.password)

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-logout',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+
+  constructor(private funFastUserService: FunFastUserService) {
+    // this.funFastUserService = funFastUserService;
+  }
+  
+
 
   ngOnInit() {
+    this.funFastUserService
+    .userChanged
+    .subscribe(currentUser => this.currentUser = currentUser);
+
+  this.currentUser = this.funFastUserService.currentUser;
+  console.log(this.currentUser);
   }
 
 }
