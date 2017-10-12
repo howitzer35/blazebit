@@ -9,7 +9,8 @@ import { User } from '../models/user';
 })
 export class NavigationComponent implements OnInit {
 
-  user: User; // This is really important. Don't let it 'vap'rate.
+  currentUser: User;
+  
 
   // private funFastUserService: FunFastUserService;
 
@@ -20,6 +21,9 @@ export class NavigationComponent implements OnInit {
   ngOnInit() {
     this.funFastUserService
       .userChanged
-      .subscribe(user => this.user = user);
+      .subscribe(currentUser => this.currentUser = currentUser);
+
+    this.currentUser = this.funFastUserService.currentUser;
+    console.log(this.currentUser);
   }
 }

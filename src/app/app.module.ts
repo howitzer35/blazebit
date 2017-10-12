@@ -21,6 +21,7 @@ import { AppRoutingModule } from './routing/routing.module';
 import { DataService } from './data.service';
 import { FunFastUserService } from './fun-fast-user/fun-fast-user.service';
 import { StatusMessageComponent } from './status-message/status-message.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { StatusMessageComponent } from './status-message/status-message.componen
     CompletedComponent,
     WishlistComponent,
     StatusMessageComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
