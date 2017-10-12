@@ -14,7 +14,6 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { HikeComponent } from './hike/hike.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CompletedComponent } from './completed/completed.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
@@ -34,7 +33,6 @@ import { LogoutComponent } from './logout/logout.component';
     ContactUsComponent,
     SignupComponent,
     LoginComponent,
-    HikeComponent,
     ProfileComponent,
     CompletedComponent,
     WishlistComponent,
