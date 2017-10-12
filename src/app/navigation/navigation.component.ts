@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -14,9 +15,21 @@ export class NavigationComponent implements OnInit {
 
   // private funFastUserService: FunFastUserService;
 
-  constructor(private funFastUserService: FunFastUserService) {
+  constructor(private funFastUserService: FunFastUserService, private router: Router) {
     // this.funFastUserService = funFastUserService;
   }
+
+  clearLocalStorage() {
+    console.log('hello?');
+    this.funFastUserService
+      .logout()
+      .subscribe(
+        // hike => this.router.navigate(['hike', hike.id])
+        () => this.router.navigate(['home']),
+        () => this.router.navigate(['home']),
+      );
+  }
+  
 
   ngOnInit() {
     this.funFastUserService

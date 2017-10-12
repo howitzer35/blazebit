@@ -31,7 +31,7 @@ export class DataService {
             .catch(this.handleError);
     }
 
-    deleteRecord(endpoint: string, id:number): Observable<object> {
+    deleteRecord(endpoint: string, id:number | string): Observable<object> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}`;
         return this.http.delete(apiUrl, { withCredentials: true })
             .map(this.extractData)
