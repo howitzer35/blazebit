@@ -1,3 +1,4 @@
+import { User } from './models/user';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
@@ -24,26 +25,28 @@ export class DataService {
             .catch(this.handleError);
     }
 
-    getRecord(endpoint: string, id): Observable<object> {
+    getRecord(endpoint: string, id): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}`;
         return this.http.get(apiUrl, { withCredentials: true })
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    deleteRecord(endpoint: string, id:number | string): Observable<object> {
+    deleteRecord(endpoint: string, id:number | string): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}`;
         return this.http.delete(apiUrl, { withCredentials: true })
             .map(this.extractData)
             .catch(this.handleError);
     }
 
-    editRecord(endpoint: string, record:object, id:number): Observable<object> {
+    editRecord(endpoint: string, record: any, id:number | string): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}`;
         return this.http.put(apiUrl, record, { withCredentials: true })
             .map(this.extractData)
             .catch(this.handleError);
     }
+
+  
 
     addRecord(endpoint: string, record:object): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}`;

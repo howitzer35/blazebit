@@ -40,7 +40,17 @@ export class FunFastUserService {
   }
 
   login(username: string, password: string): Observable<User> {
-    return null;
+    const payload = { username, password }
+    return this.dataService
+    .editRecord('session', payload, 'mine')
+    .do(user => this.userChanged.next(user))
+    .do(user => this.currentUser = user)
+    .do(user => this.LocalStorageManager.setValue("user", user))
+    .catch(e => {
+      this.userChanged.next(null);
+      this.LocalStorageManager.removeValue("user");
+      return Observable.throw(e);
+    });
   }
 
   logout(): Observable<any> {
