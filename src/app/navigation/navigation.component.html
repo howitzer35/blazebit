@@ -15,17 +15,16 @@
               <li routerLinkActive="active"><a routerLink="/home">Home</a></li>
               <li routerLinkActive="active"><a routerLink="/about-us">About Us</a></li>
               <li routerLinkActive="active"><a routerLink="/contact-us">Contact Us</a></li>
-              <li routerLinkActive="active"><a *ngIf="!user" routerLink="/login">Login</a></li>
-              <li routerLinkActive="active"><a *ngIf="!user" routerLink="/signup">Sign Up</a></li>
-              <li routerLinkActive="active"><a *ngIf="user" routerLink="/completed">Completed Hikes</a></li>
-              <li routerLinkActive="active"><a *ngIf="user"routerLink="/wishlist">Wishlist Hikes</a></li>
-              <li routerLinkActive="active"><a *ngIf="user"routerLink="/hike">Hike</a></li>              
-              <li routerLinkActive="active"><a *ngIf="user"routerLink="/profile">Profile</a></li>
+              <li routerLinkActive="active"><a *ngIf="!currentUser" routerLink="/login">Login</a></li>
+              <li routerLinkActive="active"><a *ngIf="!currentUser" routerLink="/signup">Sign Up</a></li>
+              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/completed">Completed Hikes</a></li>
+              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/wishlist">Wishlist Hikes</a></li>
+              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/hike">Hike</a></li>              
+              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/profile">Profile</a></li>
+              <li routerLinkActive="active"><a routerLink="/logout">Logout</a></li>
+              
             </ul>
-            </div>
+          </div>
       </div>
   </div>
 </nav>
-
-
-<!-- *ngIf="userIsValid"(user) -->

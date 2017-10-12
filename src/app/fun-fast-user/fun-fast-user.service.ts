@@ -11,9 +11,24 @@ export class FunFastUserService {
 
   public userChanged: Subject<User>;
   public currentUser: User;
+  public storedUser;
+
+  private LocalStorageManager = {
+    setValue: function (key, value) {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    },
+    getValue: function (key) {
+      try {
+        return JSON.parse(window.localStorage.getItem(key));
+      } catch (e) {
+        return null;
+      }
+    }
+  };
 
   constructor(private dataService: DataService) {
     this.userChanged = new Subject<User>();
+    this.currentUser = this.LocalStorageManager.getValue("user");
   }
 
   login(username: string, password: string): Observable<User> {
@@ -28,7 +43,8 @@ export class FunFastUserService {
     return this.dataService
       .addRecord('users/new', { username, password })
       .do(user => this.userChanged.next(user))
-      .do(user => this.currentUser = user);
+      .do(user => this.currentUser = user)
+      .do(user => this.storedUser = this.LocalStorageManager.setValue("user", user));
   }
 
 }

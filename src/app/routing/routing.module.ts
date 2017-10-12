@@ -19,6 +19,9 @@ import { RouterModule, Routes } from '@angular/router';
  import { SignupComponent }   from '../signup/signup.component';
  //wishlist imports
  import { WishlistComponent }   from '../wishlist/wishlist.component';
+//logout imports
+ import { LogoutComponent } from '../logout/logout.component';
+ 
 
  
  const routes: Routes = [
@@ -30,7 +33,6 @@ import { RouterModule, Routes } from '@angular/router';
    { path: 'completed',  component: CompletedComponent },
    // contact-us routes
    { path: 'contact-us',  component: ContactUsComponent },
-   // details routes
    // hike routes
    { path: 'hike',  component: HikeComponent },
    // login routes
@@ -40,6 +42,8 @@ import { RouterModule, Routes } from '@angular/router';
    // wishlist routes
    { path: 'wishlist',  component: WishlistComponent },
    // profile routes
+   { path: 'profile',  component: ProfileComponent },
+   //logout routes
    { path: 'profile',  component: ProfileComponent },
    
  ];
