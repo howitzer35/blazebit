@@ -5,7 +5,6 @@
   <h1>
     WELCOME TO BLAZEBIT!
   </h1>
-  <img width="700" height="600" src="https://xmnuz23762.i.lithium.com/t5/image/serverpage/image-id/25244i46E7B200A12FED4B?v=1.0">
 </div>
 
 
@@ -19,18 +18,19 @@
       <th>Trail Name</th>
       <th>Distance</th>
       <th>Elevation</th>
-      <th>Pass Required</th>
-      <th>Rating</th>
+      <th>Lattitude</th>
+      <th>Longitude</th>
       <!-- <th>Admin</th> -->
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let stub of stubData">
-      <td>{{stub.destination}}</td>
-      <td>{{stub.distance}}</td>
-      <td>{{stub.elevation}}</td>
-      <td>{{stub.pass}}</td>
-      <td>{{stub.rating}}</td>
+    <tr *ngFor="let hike of hikeInfo">
+      <td>{{hike.name}}</td>
+      <td>{{hike.distance}}</td>
+      <td>{{hike.elevation}}</td>
+      <td>{{hike.lattitude}}</td>
+      <td>{{hike.longitude}}</td>
+      
       <!-- <td class="text-center">
         <a class="btn btn-primary" [routerLink]="['/student/edit/', student.student_id]">Edit</a>&nbsp;
         <button (click)="deleteStudent(student.student_id)" class="btn btn-danger">Delete</button>
