@@ -28,7 +28,7 @@ import { DataService } from './data.service';
 import { FunFastUserService } from './fun-fast-user/fun-fast-user.service';
 import { StatusMessageComponent } from './status-message/status-message.component';
 import { LogoutComponent } from './logout/logout.component';
-
+import { DetailsComponent } from './details/details.component';
 //my code
 
 @Component({
