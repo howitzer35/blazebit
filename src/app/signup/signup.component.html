@@ -6,15 +6,15 @@
   <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
 
   <div class="page-header">
-      <h1>Login</h1>
+      <h1>Signup</h1>
   </div>
-  <div class="well">Please create a login to .</div>
+  <div class="well">Please signup to access your dashboard.</div>
   
   <form novalidate (submit)="saveRegisterForm(SignupForm)" #SignupForm="ngForm" class="form-horizontal">
 
     <div class="form-group">
       <label for="username" class="col-sm-2 control-label">Username</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <input formControlUsername="username" type="text" required minlength="1" name="username" class="form-control" id="username" ngModel #username="ngModel" placeholder="User Name">
           <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
           <div *ngIf="username.errors.required">Username is required.</div>
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
       <label for="password" class="col-sm-2 control-label">Password</label>
-      <div class="col-sm-10">
+      <div class="col-sm-4">
         <input type="password" required minlength="1" name="password" class="form-control" id="password" placeholder="Password" ngModel #password="ngModel">
           <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
           <div *ngIf="password.errors.required">Password is required.</div>
@@ -42,7 +42,7 @@
     <!-- submit button -->
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-2 col-sm-6">
         <button [disabled]="!SignupForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
       </div>
     </div>
