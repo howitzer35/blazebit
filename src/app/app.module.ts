@@ -22,6 +22,7 @@ import { DataService } from './data.service';
 import { FunFastUserService } from './fun-fast-user/fun-fast-user.service';
 import { StatusMessageComponent } from './status-message/status-message.component';
 import { LogoutComponent } from './logout/logout.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LogoutComponent } from './logout/logout.component';
     WishlistComponent,
     StatusMessageComponent,
     LogoutComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
