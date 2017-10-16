@@ -18,6 +18,8 @@ import { RouterModule, Routes } from '@angular/router';
  import { WishlistComponent }   from '../wishlist/wishlist.component';
 //logout imports
  import { LogoutComponent } from '../logout/logout.component';
+ //trail imports
+ import { TrailsComponent } from '../trails/trails.component';
  
 
  
@@ -40,6 +42,8 @@ import { RouterModule, Routes } from '@angular/router';
    { path: 'profile',  component: ProfileComponent },
    //logout routes
    { path: 'profile',  component: ProfileComponent },
+   //trail routes
+   { path: 'trails',  component: TrailsComponent },
    
  ];
   

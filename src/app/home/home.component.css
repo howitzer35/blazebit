@@ -1,0 +1,74 @@
+/**{border: 1px red solid}*/
+
+.carousel-caption {
+    /* display: flex; */
+    /* flex-direction:  */
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-weight: bold;
+    font-size: 70px;
+    /* text-orientation: ; */
+}
+
+h2 {
+    font-family: 'Reenie Beanie', cursive;
+    font-weight: bold;
+    font-size: 50px;    
+}
+
+
+/* 
+.image_text {
+    margin: 10px 10px 10px 10px;
+    background-color: white;
+  }
+  
+  .main-text {
+      position: absolute;
+      width: 100%;
+    }
+  
+  h1 {
+    font-size: 32px;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-family: Helvetica;
+    text-align: center;
+  }
+  
+  h3 {
+    font-size: 18px !important;
+    font-weight: bold !important;
+    font-family: Helvetica;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 16px;
+    font-family: Helvetica;
+    text-align: center;
+  }
+  
+  .row {
+    display: flex;
+    flex-flow: row-reverse wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .col-md-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .container-fluid {
+    background-color: black;
+  }
+
+   */

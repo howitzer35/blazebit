@@ -1,34 +1,37 @@
-<ol class="breadcrumb">
+<!-- <div class="background" src="/assets/pattern.png"> -->
+  <!-- <img src="/assets/pattern2.jpg"> -->
 
-  <li class="active">Wishlist Hikes</li>
-</ol>
 
-  <h2>Hike Wish List</h2>
-  
-  <br>
-  <br>
-  
-  
-  <table class="table table-striped table-bordered" id="dataTable" style="width:100%">
-    <thead>
-      <tr>
-        <th>Hike Name</th>
-        <th>Distance</th>
-        <th>Admin</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let hike of hikes">
-        <td>{{hike.hike_name}}</td>
-        <td>{{hike.distance}}</td>
-        <td class="text-center">
-          <a class="btn btn-primary" [routerLink]="['/wishlist/select/', hike.hike_name]">Select</a>&nbsp;
-          <button (click)="deleteHike(hike.hike_name)" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <ol class="breadcrumb">
+    <li class="active">Wishlist Hikes</li>
+  </ol>
+
+  <body>
+    <h2>Hike Wish List</h2>
+    
+    <br>
+    <br>
+    
+    <table class="table table-striped table-bordered" id="dataTable" style="width:100%">
+      <thead>
+        <tr>
+          <th>Hike Name</th>
+          <th>Distance</th>
+          <th>Admin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hike of hikes">
+          <td>{{hike.hike_name}}</td>
+          <td>{{hike.distance}}</td>
+          <td class="text-center">
+            <a class="btn btn-primary" [routerLink]="['/wishlist/select/', hike.hike_name]">Select</a>&nbsp;
+            <button (click)="deleteHike(hike.hike_name)" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
   
   
   
