@@ -15,7 +15,8 @@ import { DataService } from '../data.service'
 export class DetailsComponent implements OnInit {
 
   hike: object;
-
+  successMessage: string;
+  errorMessage: string;
   currentUser: User;
 
   constructor(
@@ -43,20 +44,16 @@ export class DetailsComponent implements OnInit {
     console.log(this.currentUser);
   }
 
-  // markHikeCompleted() {
-  //   return this.dataService
-  //   .editRecord("trails", )
 
-
-  //   .login(signUpData.value.username, signUpData.value.password)
-  //   .subscribe(
-  //     // hike => this.router.navigate(['hike', hike.id])
-  //     () => this.router.navigate(['home']),
-  //     () => this.router.navigate(['home'])
-  //   );
-  //  this.signUpData = {};
-  // }
-
+  addHikeToUser(id:number) {
+    this.dataService.manageHikeRecord("users/trails", id)
+    .subscribe(user => this.handleSuccessfulSignup(user));
+    }
+ 
+    private handleSuccessfulSignup(user: User) {
+      this.successMessage = "Hike added to user successfully";
+    }
+  
 
 }
 
