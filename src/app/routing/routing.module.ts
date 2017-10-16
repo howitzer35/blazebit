@@ -20,6 +20,8 @@ import { RouterModule, Routes } from '@angular/router';
  import { LogoutComponent } from '../logout/logout.component';
  //trail imports
  import { TrailsComponent } from '../trails/trails.component';
+//trail imports
+import { DetailsComponent } from '../details/details.component';
  
 
  
@@ -44,8 +46,14 @@ import { RouterModule, Routes } from '@angular/router';
    { path: 'profile',  component: ProfileComponent },
    //trail routes
    { path: 'trails',  component: TrailsComponent },
+   //details routes
+   { path: 'details',  component: DetailsComponent },
+   { path: 'details/:id',  component: DetailsComponent },
+   
    
  ];
+
+
   
  @NgModule({
    imports: [ RouterModule.forRoot(routes) ],

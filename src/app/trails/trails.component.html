@@ -18,7 +18,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let hike of hikeInfo">
-      <td>{{hike.name}}</td>
+      <td><a [routerLink]="['/details/', hike.id]">{{hike.name}}</a></td>
       <td>{{hike.distance}}</td>
       <td>{{hike.elevation}}</td>
       <!-- <td>{{hike.lattitude}}</td>

@@ -24,7 +24,9 @@ import { StatusMessageComponent } from './status-message/status-message.componen
 import { LogoutComponent } from './logout/logout.component';
 import { DetailsComponent } from './details/details.component';
 import { TrailsComponent } from './trails/trails.component';
+import { ChartsModule } from 'ng2-charts';
 
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +50,8 @@ import { TrailsComponent } from './trails/trails.component';
     AppRoutingModule,
     HttpModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
     DataService,
