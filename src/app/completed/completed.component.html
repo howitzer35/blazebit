@@ -13,15 +13,15 @@
     <tr>
       <th>Hike Name</th>
       <th>Distance</th>
-      <th>Completion Date</th>
+      <!-- <th>Completion Date</th> -->
       <th>Admin</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let hike of hikes">
-      <td>{{hike.hike_name}}</td>
+    <tr *ngFor="let hike of currentUser.completedTrails">
+      <td>{{hike.name}}</td>
       <td>{{hike.distance}}</td>
-      <td>{{hike.date}}</td>
+      <!-- <td>{{hike.date}}</td> -->
       <td class="text-center">
         <a class="btn btn-primary" [routerLink]="['/completed/edit/', hike.hike_name]">Edit</a>&nbsp;
         <button (click)="deleteHike(hike.hike_name)" class="btn btn-danger">Delete</button>
