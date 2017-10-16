@@ -1,0 +1,8 @@
+:host {
+    display: block
+}
+
+.stupidbootstrapmargintop{
+    position: relative;
+    top: 51px;
+}
