@@ -1,27 +1,10 @@
 language: node_js
-sudo: true
-dist: zesty
-
 node_js:
-  - '8.4.0'
-
+- 8.4.0
 branches:
   only:
   - master
-
-# before_install:
-#  - export CHROME_BIN=/usr/bin/google-chrome
-#  - export DISPLAY=:99.0
-#  - sh -e /etc/init.d/xvfb start
-#  - sudo apt-get update
-#  - sudo apt-get install -y libappindicator1 fonts-liberation
-#  - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-#  - sudo dpkg -i google-chrome*.deb
-
- deploy:
+deploy:
   provider: heroku
-  app: realblazebit
-  api_key: 
-    secure:
-
-# :)
+  api_key:
+    secure: iVUP33YspTIhNXWQwxuNoM3ebJEzcRoWUslhzns6T55Ziq8EYNVdEnvwF9P21QkHqPqIroQFU9kORoWrh7m7iM516c1xWvYqmzpm5GvcfRiDSGsZje1u+//nI8ZjM/0hglocLZPtu2B/GkWKZmXrFTZSVwOToMuRi0ORTEn9d5YCTf2Ed7EAP5aEkTlQjgM3lVJEAcWoGJfCBxeri7YyjiijjeHIXX6k7CGCLnPUDAsViz9VIYjqXwUHJwKItatOm5zqLTK7MqZ3OV8Hl0SJBA78yG4173lhvrcamQtrPewf4aphxbmjCF+YSnC/vauUVMiJK14q36h1XvCUZoBBtVFvOy+k5hHCWT6XVkH7BR2T2NB0L/vA0sYy8TZSr+O4vq96PSdkA47k1JUIOQYKTLZJflc/0Hdd9rMl80GT1YWWp+WrwwnzW5s56vUzig8unfmg/zBUxsNMMOxkSSRsfHHryeFugFwWIuHUC6efhxzu3dk3/1I8x35E/LY0+LQET//Sf4K63tpV+0Dolf4yhRWB349k8kACkfppy6KIb3G56HFidyRDBOgf7L6OezAz/eUkThd0oImVwemtKrqcnrjGA/Wc4o/aL9gpfRJxdcku04rqHFc/woI8Ja3FgUKPZZ6IfUV4xWAgDogNIIRqgIPv8Ga5Ptg7xNX4oFYQeHQ=
