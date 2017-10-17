@@ -46,14 +46,22 @@ export class DataService {
             .catch(this.handleError);
     }
 
-    //adds 1 hike to list of completed hikes for user with PUT request
+    //deletes 1 hike from the list wishlist hikes with for currentUser with a DELETE REQUEST
+    deleteWishlistRecord(endpoint: string, id:number | string): Observable<any> {
+        let apiUrl = `${this.baseUrl}${endpoint}/${id}/remove/wishlist`;
+        return this.http.delete(apiUrl, { withCredentials: true })
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    //adds 1 hike to list of completed hikes for currentUser with a PUT request
     manageHikeRecord(endpoint: string, id:number): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}/add/completed`;
         return this.http.put(apiUrl, {}, { withCredentials: true })
         .map(this.extractData);
     }
 
-    //adds 1 hike to list of wishlists hikes for user
+    //adds 1 hike to list of wishlists hikes for currentUser with a PUT request
     manageWishRecord(endpoint: string, id:number): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}/add/wishlist`;
         return this.http.put(apiUrl, {}, { withCredentials: true })
