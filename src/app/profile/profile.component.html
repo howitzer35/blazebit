@@ -2,7 +2,6 @@
   <li class="active">Profile</li>
 </ol>
 
-
 <div class="col-md-6">
   <canvas baseChart
     [data]="lineChartData"
@@ -21,37 +20,52 @@
     (chartHover)="chartHovered($event)"
     (chartClick)="chartClicked($event)"></canvas>
 </div>
-<div class="col-md-12 text-center" style="margin-top: 10px;height: 50%">
+<div style="text-align:center">
+  <h2 style="text-align:center">Completed Hikes for {{ currentUser.username }}</h2>
+  <table class="table table-striped table-bordered" id="dataTable" style="width:100%">
+    <thead>
+      <tr>
+        <th>Hike Name</th>
+        <th>Distance</th>
+        <th>Elevation</th>
+        <th>Admin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let hike of currentUser.completedTrails">
+        <td>{{hike.name}}</td>
+        <td>{{hike.distance}}</td>
+        <td>{{hike.elevation}}</td>
+        <td class="text-center">
+          <a class="btn btn-primary" [routerLink]="['/completed/edit/', hike.name]">Edit</a>&nbsp;
+          <button (click)="deleteHike(hike.hike_name)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
-
-
-
-
-<!-- ORIGINAL CRAZY CHART
- <div class="row">
-  <div class="col-md-6">
-    <div style="display: block;">
-    <canvas baseChart width="400" height="400"
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]="lineChartType"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)"></canvas>
-    </div>
-  </div>
-  <div class="col-md-6" style="margin-bottom: 10px">
-    <table class="table table-responsive table-condensed">
+<div>
+  <h2 style="text-align:center">Wishlist Hikes for {{ currentUser.username }}</h2>
+  <table class="table table-striped table-bordered" id="dataTable" style="width:100%">
+    <thead>
       <tr>
-        <th *ngFor="let label of lineChartLabels">{{label}}</th>
+        <th>Hike Name</th>
+        <th>Distance</th>
+        <th>Elevation</th>
+        <th>Admin</th>
       </tr>
-      <tr *ngFor="let d of lineChartData">
-        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+    </thead>
+    <tbody>
+      <tr *ngFor="let wishhike of currentUser.wishlistTrails">
+        <td>{{wishhike.name}}</td>
+        <td>{{wishhike.distance}}</td>
+        <td>{{wishhike.elevation}}</td>
+        <td class="text-center">
+          <a class="btn btn-primary" [routerLink]="['/completed/edit/', wishhike.name]">Edit</a>&nbsp;
+          <button (click)="deleteHike(wishhike.name)" class="btn btn-danger">Delete</button>
+        </td>
       </tr>
-    </table>
-    <button (click)="randomize()">CLICK</button>
-  </div>
-</div> -->-->
+    </tbody>
+  </table>
+</div>
