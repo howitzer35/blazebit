@@ -15,8 +15,6 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CompletedComponent } from './completed/completed.component';
-import { WishlistComponent } from './wishlist/wishlist.component';
 import { AppRoutingModule } from './routing/routing.module';
 import { DataService } from './data.service';
 import { FunFastUserService } from './fun-fast-user/fun-fast-user.service';
@@ -38,12 +36,11 @@ import { ChartsModule } from 'ng2-charts';
     SignupComponent,
     LoginComponent,
     ProfileComponent,
-    CompletedComponent,
-    WishlistComponent,
     StatusMessageComponent,
     LogoutComponent,
     DetailsComponent,
     TrailsComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -51,7 +48,7 @@ import { ChartsModule } from 'ng2-charts';
     HttpModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule 
   ],
   providers: [
     DataService,
