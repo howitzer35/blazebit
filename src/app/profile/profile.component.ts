@@ -13,49 +13,37 @@ import { User } from '../models/user';
     
   currentUser: any; // Probably temporary
 
-  currentHikes = [];
-
-  private LocalStorageManager = {
-    setValue: function (key, value) {
-      window.localStorage.setItem(key, JSON.stringify(value));
-    },
-    getValue: function (key) {
-      try {
-        return JSON.parse(window.localStorage.getItem(key));
-      } catch (e) {
-        return null;
-      }
-    },
-    removeValue: function(key) {
-      window.localStorage.removeItem(key);
-    }
-  };
-
-  currentHike = this.LocalStorageManager.getValue("user");
-
-
-
   constructor(private funFastUserService: FunFastUserService) { }
+
+    ngOnView() {
+      this.currentUser = this.funFastUserService.currentUser;
+      console.log("docheck watch")
+      console.log(this.funFastUserService.currentUser);
+      
+    }
 
   ngOnInit() {
     this.currentUser = this.funFastUserService.currentUser;
-    // console.log(this.currentUser.completedTrails[0].name)
+    //populates distance over hikes line chart
     for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
       this.lineChartLabels.push(this.currentUser.completedTrails[index].name)
       this.lineChartData.push(this.currentUser.completedTrails[index].distance)
     }
-    console.log(this.lineChartLabels)
+    //populates elevation over hikes bar chart
+    for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
+      this.barChartLabels.push(this.currentUser.completedTrails[index].name)
+      this.barChartData.push(this.currentUser.completedTrails[index].elevation)
+    }
+    console.log(this.funFastUserService.currentUser);
   }
 
-  // lineChart
+  // Distance over hikes
   public lineChartData:Array<any> = [];
   public lineChartLabels:Array<any> = [];
   public lineChartType:string = 'line';
   
-  //barChart
-  public barChartData:Array<any> = [
-    [],
-  ];
+  // Elevation over hikes
+  public barChartData:Array<any> = [];
   public barChartLabels:Array<any> = [];
   public barChartType:string = 'bar';
 

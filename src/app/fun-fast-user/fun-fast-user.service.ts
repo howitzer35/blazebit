@@ -42,15 +42,13 @@ export class FunFastUserService {
   login(username: string, password: string): Observable<User> {
     const payload = { username, password }
     return this.dataService
-    .editRecord('session', payload, 'mine')
-    .do(user => this.userChanged.next(user))
-    .do(user => this.currentUser = user)
-    .do(user => this.LocalStorageManager.setValue("user", user))
-    .catch(e => {
-      this.userChanged.next(null);
-      this.LocalStorageManager.removeValue("user");
-      return Observable.throw(e);
-    });
+      .editRecord('session', payload, 'mine')
+      .do(user => this.refreshUser(user))
+      .catch(e => {
+        this.userChanged.next(null);
+        this.LocalStorageManager.removeValue("user");
+        return Observable.throw(e);
+      });
   }
 
   logout(): Observable<any> {
@@ -66,14 +64,16 @@ export class FunFastUserService {
       });
   }
 
-
-
   signup(username: string, password: string): Observable<User> {
     return this.dataService
       .addRecord('users/new', { username, password })
-      .do(user => this.userChanged.next(user))
-      .do(user => this.LocalStorageManager.setValue("user", user))
-      .do(user => this.currentUser = user);
+      .do(user => this.refreshUser(user));
+  }
+
+  refreshUser(user: User): void {
+    this.currentUser = user;
+    this.userChanged.next(user);
+    this.LocalStorageManager.setValue("user", user);
   }
 
 }

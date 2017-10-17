@@ -46,9 +46,17 @@ export class DataService {
             .catch(this.handleError);
     }
 
+    //adds 1 hike to list of completed hikes for user with PUT request
     manageHikeRecord(endpoint: string, id:number): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}/add/completed`;
-        return this.http.put(apiUrl, {username: "eric", password:"eric"}, { withCredentials: true })
+        return this.http.put(apiUrl, {}, { withCredentials: true })
+        .map(this.extractData);
+    }
+
+    //adds 1 hike to list of wishlists hikes for user
+    manageWishRecord(endpoint: string, id:number): Observable<any> {
+        let apiUrl = `${this.baseUrl}${endpoint}/${id}/add/wishlist`;
+        return this.http.put(apiUrl, {}, { withCredentials: true })
         .map(this.extractData);
     }
     
