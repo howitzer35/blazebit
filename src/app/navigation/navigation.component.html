@@ -16,9 +16,8 @@
               <li routerLinkActive="active"><a routerLink="/about-us">About Us</a></li>
               <li routerLinkActive="active"><a routerLink="/contact-us">Contact Us</a></li>
               <li routerLinkActive="active"><a routerLink="/trails">Trails</a></li>
+              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/profile">Profile</a></li>              
               <li routerLinkActive="active"><a *ngIf="!currentUser" routerLink="/login">Login</a></li>
-              <li routerLinkActive="active"><a *ngIf="!currentUser" routerLink="/signup">Sign Up</a></li>       
-              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/profile">Profile</a></li>
               <li routerLinkActive="active"><a *ngIf="!currentUser" routerLink="/signup">Sign Up</a></li>       
               <li routerLinkActive="active"><a *ngIf="currentUser" (click)="clearLocalStorage()">Logout</a></li>
               
