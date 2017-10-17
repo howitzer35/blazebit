@@ -24,7 +24,10 @@ export class LoginComponent implements OnInit {
 
   signUpData: object;
 
-  constructor(private funFastUserService: FunFastUserService, private router: Router) { }
+  constructor(
+    private funFastUserService: FunFastUserService, 
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }

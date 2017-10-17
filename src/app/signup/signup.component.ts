@@ -9,6 +9,8 @@ import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-signup',
@@ -30,7 +32,8 @@ export class SignupComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private http: Http,
-    private funFastUserService: FunFastUserService
+    private funFastUserService: FunFastUserService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -42,6 +45,16 @@ export class SignupComponent implements OnInit {
 
   saveRegisterForm(signUpData: NgForm){
     // console.log(signUpData.value);
+
+    this.funFastUserService
+    .signup(signUpData.value.username, signUpData.value.password)
+    .subscribe(
+      // hike => this.router.navigate(['hike', hike.id])
+      () => this.router.navigate(['home']),
+      () => this.router.navigate(['home'])
+    );
+
+   this.signUpData = {};
 
     this.funFastUserService
       .signup(signUpData.value.username, signUpData.value.password)

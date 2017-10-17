@@ -20,7 +20,7 @@
               <li routerLinkActive="active"><a *ngIf="!currentUser" routerLink="/signup">Sign Up</a></li>
               <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/completed">Completed Hikes</a></li>
               <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/wishlist">Wishlist Hikes</a></li>        
-              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/profile">Profile!</a></li>
+              <li routerLinkActive="active"><a *ngIf="currentUser" routerLink="/profile">Profile</a></li>
               <li routerLinkActive="active"><a *ngIf="currentUser" (click)="clearLocalStorage()">Logout</a></li>
               
             </ul>
