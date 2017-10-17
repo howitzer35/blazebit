@@ -48,18 +48,10 @@ export class DataService {
 
     manageHikeRecord(endpoint: string, id:number): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}/${id}/add/completed`;
-        return this.http.put(apiUrl, {}, { withCredentials: true })
+        return this.http.put(apiUrl, {username: "eric", password:"eric"}, { withCredentials: true })
         .map(this.extractData);
     }
     
-//     manageFridgeRecord(endpoint: string, id:number): Observable<any> {
-//         let apiUrl = `${this.fridgeUrl}${id}/${endpoint}`;
-// //         console.log(apiUrl)
-//         return this.http.post(apiUrl, id, this.options)
-//             .map(this.extractData);
-// //     }
-    
-
     addRecord(endpoint: string, record:object): Observable<any> {
         let apiUrl = `${this.baseUrl}${endpoint}`;
         console.log(apiUrl)
