@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service'
+import { User } from '../models/user';
+import { Hike } from '../models/hike';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -14,16 +16,41 @@ import { DataService } from '../data.service'
 })
 export class DetailsComponent implements OnInit {
 
-  hike: object;
+  hike: Hike;
+  // hike: object;
   successMessage: string;
   errorMessage: string;
   currentUser: User;
+  hikePath;
+  lattitude : number = 0;
+  longitude : number = 0;
+
+  arrayOfImages = [
+    "/assets/hike-trails/hike1.jpg",
+    "/assets/hike-trails/hike2.jpg",
+    "/assets/hike-trails/hike3.jpg",
+    "/assets/hike-trails/hike4.jpg",
+    "/assets/hike-trails/hike5.jpg",
+    "/assets/hike-trails/hike6.jpg",
+    "/assets/hike-trails/hike7.jpg",
+    "/assets/hike-trails/hike8.jpg",
+    "/assets/hike-trails/hike9.jpg",
+    "/assets/hike-trails/hike10.jpg"
+  ]
+
+  randomHikeImage() {
+    return  [
+      this.arrayOfImages[Math.floor(Math.random() * this.arrayOfImages.length)]
+    ];     
+  }
+
 
   constructor(
     private dataService: DataService,
     private route: ActivatedRoute,
     private funFastUserService: FunFastUserService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) { }
 
   getRecordForEdit() {
@@ -33,6 +60,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.route.params
       .subscribe((params: Params) => {
         (+params['id']) ? this.getRecordForEdit() : null;
@@ -41,7 +69,7 @@ export class DetailsComponent implements OnInit {
       .userChanged
       .subscribe(currentUser => this.currentUser = currentUser);
     this.currentUser = this.funFastUserService.currentUser;
-    console.log(this.currentUser);
+    this.hikePath = this.randomHikeImage();
   }
 
   //adds 1 hike to list of completed hikes for user
@@ -64,6 +92,13 @@ export class DetailsComponent implements OnInit {
   private handleSuccessfulWish(user: User) {
     this.successMessage = "Wishlist Hike added to user successfully";
     this.funFastUserService.refreshUser(user);
+  }
+
+  getCoordURL() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.google.com/maps/embed/v1/view?key=AIzaSyAbQGwJAp43HJ2uZgwgL-49rqM7xaNWxyk
+    &center=${this.hike.lattitude},${this.hike.longitude}
+    &zoom=18
+    &maptype=satellite`)
   }
 
 }

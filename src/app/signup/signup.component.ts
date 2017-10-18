@@ -10,12 +10,15 @@ import { Http } from '@angular/http';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import {SimpleTimer} from 'ng2-simple-timer';
+
 
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls:  ['./signup.component.css']
+  
 })
 
 export class SignupComponent implements OnInit {
@@ -26,6 +29,7 @@ export class SignupComponent implements OnInit {
   password: string = '';
 
   signUpData: object;
+  timerId;
 
 
   constructor(
@@ -33,7 +37,8 @@ export class SignupComponent implements OnInit {
     private location: Location,
     private http: Http,
     private funFastUserService: FunFastUserService,
-    private router: Router
+    private router: Router,
+    private st: SimpleTimer
   ) {}
 
   ngOnInit() {
@@ -42,19 +47,8 @@ export class SignupComponent implements OnInit {
     //     (+params['id']) ? this.getRecordForEdit() : null;
     //   });
   }
-
+ 
   saveRegisterForm(signUpData: NgForm){
-    // console.log(signUpData.value);
-
-    this.funFastUserService
-    .signup(signUpData.value.username, signUpData.value.password)
-    .subscribe(
-      // hike => this.router.navigate(['hike', hike.id])
-      () => this.router.navigate(['home']),
-      () => this.router.navigate(['home'])
-    );
-
-   this.signUpData = {};
 
     this.funFastUserService
       .signup(signUpData.value.username, signUpData.value.password)
@@ -64,6 +58,8 @@ export class SignupComponent implements OnInit {
 
   private handleSuccessfulSignup(user: User) {
     this.successMessage = "User account created successfully";
+    this.router.navigate(['home']);
+    this.funFastUserService.refreshUser(user);
   }
 
 

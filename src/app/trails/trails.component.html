@@ -4,16 +4,13 @@
 
 <h2>Available Hikes</h2>
 
-<table class="table table-striped table-bordered table-responsive table-hover container-fluid" id="hikeTable">
-  <!-- <table id="hikeTable"> -->
+<table class="table table-striped" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="5">
+  
   <thead>
     <tr>
       <th>Trail Name</th>
       <th>Distance</th>
       <th>Elevation</th>
-      <!-- <th>Lattitude</th>
-      <th>Longitude</th> -->
-      <!-- <th>Admin</th> -->
     </tr>
   </thead>
   <tbody>
@@ -21,19 +18,14 @@
       <td><a [routerLink]="['/details/', hike.id]">{{hike.name}}</a></td>
       <td>{{hike.distance}}</td>
       <td>{{hike.elevation}}</td>
-      <!-- <td>{{hike.lattitude}}</td>
-      <td>{{hike.longitude}}</td> -->
-      
-      <!-- <td class="text-center">
-        <a class="btn btn-primary" [routerLink]="['/student/edit/', student.student_id]">Edit</a>&nbsp;
-        <button (click)="deleteStudent(student.student_id)" class="btn btn-danger">Delete</button>
-      </td> -->
     </tr>
   </tbody>
+  <tfoot>
+    <tr>
+        <td colspan="4">
+            <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+        </td>
+    </tr>
+    </tfoot>
 </table>
 
-<script>
-  $(document).ready(function(){
-    $('#hikeTable').DataTable();
-});
-</script>

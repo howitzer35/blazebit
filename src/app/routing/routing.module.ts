@@ -4,8 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
  //about-us imports
  import { AboutUsComponent }   from '../about-us/about-us.component';
  import { HomeComponent }   from '../home/home.component';
- //contact-us imports
- import { ContactUsComponent }   from '../contact-us/contact-us.component';
  //login imports
  import { LoginComponent }   from '../login/login.component';
  //profile imports
@@ -26,8 +24,7 @@ import { DetailsComponent } from '../details/details.component';
    { path: 'home',  component: HomeComponent },
    // about-us routes
    { path: 'about-us',  component: AboutUsComponent },
-   // contact-us routes
-   { path: 'contact-us',  component: ContactUsComponent },
+  
    // login routes
    { path: 'login',  component: LoginComponent },
    // signup routes
