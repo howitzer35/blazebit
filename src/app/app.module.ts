@@ -23,6 +23,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { DetailsComponent } from './details/details.component';
 import { TrailsComponent } from './trails/trails.component';
 import { ChartsModule } from 'ng2-charts';
+import { DataTablesModule } from 'angular-datatables';
+
 
  
 @NgModule({
@@ -39,8 +41,7 @@ import { ChartsModule } from 'ng2-charts';
     StatusMessageComponent,
     LogoutComponent,
     DetailsComponent,
-    TrailsComponent,
-   
+    TrailsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { ChartsModule } from 'ng2-charts';
     HttpModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule 
+    ChartsModule,
+    DataTablesModule
   ],
   providers: [
     DataService,

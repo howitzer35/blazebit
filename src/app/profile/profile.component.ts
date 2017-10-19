@@ -11,16 +11,17 @@ import { User } from '../models/user';
 })
 // export class ProfileComponent implements OnInit {
 
-  export class ProfileComponent {
-    
-  currentUser: any; 
+export class ProfileComponent {
+
+  // dtOptions: DataTables.Settings = {};
+  currentUser: any;
   successMessage: string;
   errorMessage: string;
 
   constructor(private funFastUserService: FunFastUserService, private dataService: DataService) { }
 
   populateTables() {
-    
+
     //populates distance over hikes line chart
     for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
       this.lineChartLabels.push(this.currentUser.completedTrails[index].name)
@@ -37,36 +38,50 @@ import { User } from '../models/user';
   ngOnInit() {
     this.currentUser = this.funFastUserService.currentUser;
     this.populateTables();
+    // this.dtOptions = {
+
+    // };
   }
 
   // Distance over hikes
-  public lineChartData:Array<any> = [];
-  public lineChartLabels:Array<any> = [];
-  public lineChartType:string = 'line';
-  
+  public lineChartOptions: Object = {
+    scales: {
+      xAxes: [{
+        ticks: {
+          autoSkip: false
+        }
+      }]
+    }
+  }
+  public barChartOptions: Object = this.lineChartOptions
+
+  public lineChartData: Array < any > = [];
+  public lineChartLabels: Array < any > = [];
+  public lineChartType: string = 'line';
+
   // Elevation over hikes
-  public barChartData:Array<any> = [];
-  public barChartLabels:Array<any> = [];
-  public barChartType:string = 'bar';
+  public barChartData: Array < any > = [];
+  public barChartLabels: Array < any > = [];
+  public barChartType: string = 'bar';
 
   public chartClicked(e:any):void {
-    console.log(e);
-  }
+  console.log(e);
+}
  
   public chartHovered(e:any):void {
-    console.log(e);
-  }
+  console.log(e);
+}
 
-  deleteWishlistHike(id: number) {
-    this.dataService.deleteWishlistRecord("users/trails", id)
+deleteWishlistHike(id: number) {
+  this.dataService.deleteWishlistRecord("users/trails", id)
     .subscribe(user => this.handleSuccessfulWishDelete(user));
-  }
+}
 
   private handleSuccessfulWishDelete(user: User) {
-    this.successMessage = "Wishlist Hike was successfully deleted for user!";
-    this.funFastUserService.refreshUser(user);
-    this.ngOnInit();
-  }
+  this.successMessage = "Wishlist Hike was successfully deleted for user!";
+  this.funFastUserService.refreshUser(user);
+  this.ngOnInit();
+}
 
 }
 
