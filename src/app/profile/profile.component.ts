@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { DataService } from '../data.service'
 import { User } from '../models/user';
-
+import { DataTablesModule } from 'angular-datatables';
 
 @Component({
   selector: 'app-profile',

@@ -4,8 +4,6 @@ import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTableModule } from "angular2-datatable";
-import { SimpleTimer } from 'ng2-simple-timer';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +23,7 @@ import { DetailsComponent } from './details/details.component';
 import { TrailsComponent } from './trails/trails.component';
 import { ChartsModule } from 'ng2-charts';
 import { DataTablesModule } from 'angular-datatables';
+import { DataTableModule } from "angular2-datatable";
 
 
  
@@ -50,14 +49,14 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     HttpClientModule,
     ChartsModule,
-    DataTableModule 
+    DataTablesModule,
+    DataTableModule
 
   ],
   providers: [
     DataService,
     FunFastUserService,
-    ErrorService,
-    SimpleTimer
+    ErrorService
   ],
   bootstrap: [AppComponent]
 })
