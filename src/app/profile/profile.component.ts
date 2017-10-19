@@ -13,10 +13,11 @@ import { DataTablesModule } from 'angular-datatables';
 
 export class ProfileComponent {
 
-  // dtOptions: DataTables.Settings = {};
+  dtOptions: DataTables.Settings = { order: [[0, "desc"]] };
   currentUser: any;
   successMessage: string;
   errorMessage: string;
+  completedTrailsClone: any[];
 
   constructor(private funFastUserService: FunFastUserService, private dataService: DataService) { }
 

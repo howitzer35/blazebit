@@ -55,6 +55,7 @@
   <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="completed-table" style="width:100%">
     <thead>
       <tr>
+        <th style="display: none">Id (Ignore this)</th>
         <th>Hike Name</th>
         <th>Distance</th>
         <th>Elevation</th>
@@ -63,6 +64,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let hike of currentUser.completedTrails">
+        <td style="display: none">{{hike.id}}</td>
         <td><a [routerLink]="['/details/', hike.id]">{{hike.name}}</a></td>
         <td>{{hike.distance}}</td>
         <td>{{hike.elevation}}</td>
@@ -76,6 +78,7 @@
   <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="wishlist-table" style="width:100%">
     <thead>
       <tr>
+        <th>Id (Ignore this)</th>
         <th>Hike Name</th>
         <th>Distance</th>
         <th>Elevation</th>
@@ -84,6 +87,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let wishhike of currentUser.wishlistTrails">
+        <td>{{wishhike.id}}</td>
         <td><a [routerLink]="['/details/', wishhike.id]">{{wishhike.name}}</a></td>
         <td>{{wishhike.distance}}</td>
         <td>{{wishhike.elevation}}</td>
