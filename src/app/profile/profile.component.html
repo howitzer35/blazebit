@@ -1,7 +1,31 @@
-<!-- <ol class="breadcrumb">
-  <li class="active">Profile</li>
-</ol> -->
 
+
+<!-- Grid Cards -->
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="image_text">
+          <img class="flag" src="assets/footstep.svg">
+          <h3>Miles Hiked</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="image_text">
+          <img class="flag" src="assets/mountain.png">
+          <h3>Feet Climbed</h3>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="image_text">
+          <img class="flag" src="assets/hiker.png">
+          <h3>Total Hikes</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Line/Bar Charts -->
 
 <div class="col-md-6">
   <canvas baseChart
@@ -23,7 +47,10 @@
 </div>
 <div>
 
-  
+
+<!-- Completed, Wishlist Hikes -->
+
+
   <h2>Completed Hikes for {{ currentUser.username }}</h2>
   <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="completed-table" style="width:100%">
     <thead>
