@@ -6,13 +6,11 @@ import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/catch';
 // be stuff
 import { DataService } from '../data.service';
+import { ErrorService } from '../error.service';
 import { Http } from '@angular/http';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
-import {SimpleTimer} from 'ng2-simple-timer';
-
-
 
 @Component({
   selector: 'app-signup',
@@ -27,10 +25,7 @@ export class SignupComponent implements OnInit {
   errorMessage: string;
   username: string = '';
   password: string = '';
-
   signUpData: object;
-  timerId;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -38,21 +33,21 @@ export class SignupComponent implements OnInit {
     private http: Http,
     private funFastUserService: FunFastUserService,
     private router: Router,
-    private st: SimpleTimer
+    private error: ErrorService
   ) {}
 
   ngOnInit() {
-    // this.route.params
-    //   .subscribe((params: Params) => {
-    //     (+params['id']) ? this.getRecordForEdit() : null;
-    //   });
+
   }
  
   saveRegisterForm(signUpData: NgForm){
 
     this.funFastUserService
       .signup(signUpData.value.username, signUpData.value.password)
-      .subscribe(user => this.handleSuccessfulSignup(user));
+      .subscribe(
+        user => this.handleSuccessfulSignup(user),
+        errorResponse => this.errorMessage = this.error.message(errorResponse)
+    );
     this.signUpData = {};
   }
 
@@ -61,6 +56,10 @@ export class SignupComponent implements OnInit {
     this.router.navigate(['home']);
     this.funFastUserService.refreshUser(user);
   }
+
+  // private handleFailedSignup(user: User) {
+  //   this.errorMessage = "This user already exists in the database.";
+  // }
 
 
 

@@ -17,6 +17,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AppRoutingModule } from './routing/routing.module';
 import { DataService } from './data.service';
+import { ErrorService } from './error.service';
 import { FunFastUserService } from './fun-fast-user/fun-fast-user.service';
 import { StatusMessageComponent } from './status-message/status-message.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -53,6 +54,7 @@ import { ChartsModule } from 'ng2-charts';
   providers: [
     DataService,
     FunFastUserService,
+    ErrorService,
     SimpleTimer
   ],
   bootstrap: [AppComponent]
