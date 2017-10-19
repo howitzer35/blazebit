@@ -4,7 +4,7 @@ import { FormsModule }   from '@angular/forms';
 import { RouterModule }   from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { DataTableModule } from "angular2-datatable";
+// import { DataTableModule } from "angular2-datatable";
 // import { SimpleTimer } from 'ng2-simple-timer';
 
 import { AppComponent } from './app.component';
@@ -51,7 +51,7 @@ import { DataTablesModule } from 'angular-datatables';
     HttpClientModule,
     ChartsModule,
     DataTablesModule,
-    DataTableModule
+    // DataTableModule
   ],
   providers: [
     DataService,
