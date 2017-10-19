@@ -76,4 +76,42 @@ export class FunFastUserService {
     this.LocalStorageManager.setValue("user", user);
   }
 
+  // savehike(username: string, password: string): Observable<User> {
+  //   const payload = { username, password }
+  //   return this.dataService
+  //   .editRecord('session', payload, 'mine')
+  //   .do(user => this.userChanged.next(user))
+  //   .do(user => this.currentUser = user)
+  //   .do(user => this.LocalStorageManager.setValue("user", user))
+  //   .catch(e => {
+  //     this.userChanged.next(null);
+  //     this.LocalStorageManager.removeValue("user");
+  //     return Observable.throw(e);
+  //   });
+  // }
+
+    // //adds 1 hike to list of completed hikes for user
+    // addHikeToUser(id:number) {
+    // this.dataService.manageHikeRecord("users/trails", id)
+    // .do(user => this.userChanged.next(user))
+    // .do(user => this.LocalStorageManager.setValue("user", user))
+    // .do(user => this.currentUser = user);
+    // }
+ 
+    // // private handleSuccessfulHike(user: User) {
+    // //   this.successMessage = "Completed Hike added to user successfully";
+    // // }
+  
+    // //adds 1 hike to list of wishlists hikes for user
+    // addWishToUser(id:number) {
+    // this.dataService.manageWishRecord("users/trails", id)
+    // .do(user => this.userChanged.next(user))
+    // .do(user => this.LocalStorageManager.setValue("user", user))
+    // .do(user => this.currentUser = user);
+    // }
+ 
+    // private handleSuccessfulWish(user: User) {
+    //   this.successMessage = "Wishlist Hike added to user successfully";
+    // }
+
 }

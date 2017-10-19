@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/catch';
 // be stuff
 import { DataService } from '../data.service';
+import { ErrorService } from '../error.service';
 import { Http } from '@angular/http';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { User } from '../models/user';
@@ -26,6 +27,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private funFastUserService: FunFastUserService, 
+    private error: ErrorService,
     private router: Router
   ) { }
 
@@ -33,20 +35,23 @@ export class LoginComponent implements OnInit {
   }
 
   saveLoginForm(signUpData: NgForm){
-    console.log(signUpData.value);
+    // console.log(signUpData.value);
 
     this.funFastUserService
       .login(signUpData.value.username, signUpData.value.password)
       .subscribe(
-        // hike => this.router.navigate(['hike', hike.id])
-        () => this.router.navigate(['home']),
-        () => this.router.navigate(['home'])
+        () => {
+          this.router.navigate(['home'])
+          console.log("yeah")
+        },
+        errorResponse => {
+          console.log(errorResponse)
+          this.errorMessage = this.error.message(JSON.parse(errorResponse))
+        }
       );
      this.signUpData = {};
   }
 
-  private handleSuccessfulSignup(user: User) {
-    this.successMessage = "User account created successfully";
-  }
+ 
 
 }
