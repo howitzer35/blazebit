@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import 'rxjs/add/operator/catch';
 import { DataService } from '../data.service';
-import { Http } from '@angular/http';
+import { Hike } from '../models/hike';
 
 @Component({
   selector: 'app-trails',
@@ -12,32 +12,56 @@ import { Http } from '@angular/http';
 })
 export class TrailsComponent implements OnInit {
 
-  private destination: string;
-  private distance: string;
-  private elevation: string;
-  private pass: string;
-  private rating: string;
-  private trailtype: string;
+  searchText: string;
+  hikeInfo: Hike[];
 
-  hikeInfo;
-
-  constructor(
-    private http: Http,
-    private dataService: DataService) { 
+  constructor(private dataService: DataService) {
+    this.hikeInfo = [];
+    for (let j = 0; j < 3; j += 1) {
+      for (let i = 0; i < 20; i += 1) {
+        this.hikeInfo.push({
+          id: -1,
+          name: '',
+          distance: 5 * j,
+          elevation: 0,
+          lattitude: 0,
+          longitude: 0,
+        });
+      }
+    }
   }
 
-  getDataFromService(){
+  getDataFromService() {
     this.dataService.getRecords("trails")
-      .subscribe(
-        hikeInfo => {
-          this.hikeInfo = hikeInfo;
-          console.log(this.hikeInfo);
-        }
-      )
+      .subscribe(hikeInfo => {
+        this.hikeInfo = hikeInfo;
+        console.log(this.hikeInfo);
+      });
   }
 
   ngOnInit() {
     this.getDataFromService();
+  }
+  
+  get shortHikes(): Hike[] {
+    return this.filterByDistance(0, 5);
+  }
+
+  get mediumHikes(): Hike[] {
+    return this.filterByDistance(5, 10);
+  }
+
+  get longHikes(): Hike[] {
+    return this.filterByDistance(10, Number.POSITIVE_INFINITY);
+  }
+
+  filterByDistance(from: number, to: number): Hike[] {
+    if (!this.hikeInfo) {
+      return [];
+    }
+    return this.hikeInfo
+      .filter(hike => hike.distance > from && hike.distance <= to)
+      .filter(hike => this.searchText ? hike.name.toLowerCase().indexOf(this.searchText) > -1 : true); 
   }
 
 }

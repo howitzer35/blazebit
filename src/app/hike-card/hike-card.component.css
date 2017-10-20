@@ -6,9 +6,17 @@
     background-color: white;
 }
 
+:host.small {
+    width: 200px;
+}
+
 .hike-image-section {
     height: 300px;
     overflow: hidden;
+}
+
+:host.small .hike-image-section {
+    height: 200px;
 }
 
 .hike-image {
@@ -16,17 +24,36 @@
     width: auto;
 }
 
+:host.small .hike-image {
+    height: 266px;
+}
+
 .hike-details {
     padding: 16px 8px;
+}
+
+:host.small .hike-details {
+    padding: 8px;
 }
 
 h1 {
     font-size: 2rem;
     margin: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+:host.small h1 {
+    font-size: 1.5rem;
 }
 
 h2 {
     font-size: 1.5rem;
     margin: 0;
     color: rgba(0, 0, 0, 0.7);
+}
+
+:host.small h2 {
+    font-size: 1.25rem;
 }

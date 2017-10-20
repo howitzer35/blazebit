@@ -11,6 +11,10 @@
     position: relative;
 }
 
+:host.small .slider-layout {
+    height: 276px;
+}
+
 .slider-layout-wrapped {
     flex-wrap: wrap;
     height: auto;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'bb-hike-card-slider',
@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./hike-card-slider.component.css']
 })
 export class HikeCardSliderComponent  {
+
+  @HostBinding('class.small') 
+  @Input()
+  size: string;
 
   leftist: number;
   wrapped: boolean;
