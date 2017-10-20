@@ -51,57 +51,16 @@
 <!-- Completed, Wishlist Hikes -->
 
 
-  <h2>Completed Hikes for {{ currentUser.username }}</h2>
+  <h2 class="text-center">Completed Hikes for {{ currentUser.username }}</h2>
   <bb-hike-card-slider>
     <bb-hike-card *ngFor="let hike of currentUser.completedTrails" [hike]="hike"></bb-hike-card>
   </bb-hike-card-slider>
-
-  <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="completed-table" style="width:100%">
-    <thead>
-      <tr>
-        <th style="display: none">Id (Ignore this)</th>
-        <th>Hike Name</th>
-        <th>Distance</th>
-        <th>Elevation</th>
-      
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let hike of currentUser.completedTrails">
-        <td style="display: none">{{hike.id}}</td>
-        <td><a [routerLink]="['/details/', hike.id]">{{hike.name}}</a></td>
-        <td>{{hike.distance}}</td>
-        <td>{{hike.elevation}}</td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
 <div>
   <h2 style="text-align:center">Wishlist Hikes for {{ currentUser.username }}</h2>
     <bb-hike-card-slider>
-      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike"></bb-hike-card>
+      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike">
+      </bb-hike-card>
     </bb-hike-card-slider>
-    <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="wishlist-table" style="width:100%">
-    <thead>
-      <tr>
-        <th>Id (Ignore this)</th>
-        <th>Hike Name</th>
-        <th>Distance</th>
-        <th>Elevation</th>
-        <th>Admin</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let wishhike of currentUser.wishlistTrails">
-        <td>{{wishhike.id}}</td>
-        <td><a [routerLink]="['/details/', wishhike.id]">{{wishhike.name}}</a></td>
-        <td>{{wishhike.distance}}</td>
-        <td>{{wishhike.elevation}}</td>
-        <td class="text-center">
-          <button (click)="deleteWishlistHike(wishhike.id)" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 </div>
