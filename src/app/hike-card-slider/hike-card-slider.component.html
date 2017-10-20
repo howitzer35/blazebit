@@ -3,6 +3,6 @@
   <div class="slider-layout" [ngStyle]="{ 'transition': 'transform 0.4s', 'transform': 'translateX(' + leftist + 'vw)' }" [ngClass]="{ 'slider-layout-wrapped': wrapped }">
     <ng-content></ng-content>
   </div>
-  <div (click)="moveLeft()" class="button-holder button-holder-left"><</div>
-  <div (click)="moveRight()" class="button-holder button-holder-right">></div>
+  <div (click)="moveRight()" class="button-holder button-holder-left"><</div>
+  <div (click)="moveLeft()" class="button-holder button-holder-right">></div>
 </div>

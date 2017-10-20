@@ -1,24 +1,27 @@
-<ol class="breadcrumb">
+<!-- <ol class="breadcrumb">
   <li class="active">Trails</li>
-</ol>
+</ol> -->
 
-<h2>Trails</h2>
+<!-- <h2>Trails</h2> -->
 
-<table class="table table-striped">
-  
-  <thead>
-    <tr>
-      <th>Trail Name</th>
-      <th>Distance</th>
-      <th>Elevation</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let hike of hikeInfo">
-      <td><a [routerLink]="['/details/', hike.id]">{{hike.name}}</a></td>
-      <td>{{hike.distance}}</td>
-      <td>{{hike.elevation}}</td>
-    </tr>
-  </tbody>
-</table>
+<input id="trailSearchBox" type="text" [(ngModel)]="searchText" placeholder="Trail Search">
 
+<div>
+  <h2>Hikes 1-5 Miles in Distance</h2> 
+  <bb-hike-card-slider size="small">
+      <bb-hike-card size="small" *ngFor="let hike of shortHikes" [hike]="hike"></bb-hike-card>
+  </bb-hike-card-slider>
+</div>
+<app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
+<div>
+  <h2>Hikes 6-10 Miles in Distance</h2>
+  <bb-hike-card-slider size="small">
+      <bb-hike-card size="small" *ngFor="let hike of mediumHikes" [hike]="hike"></bb-hike-card>
+  </bb-hike-card-slider>
+</div>
+<div>
+  <h2>Hikes 10+ Miles in Distance</h2>
+  <bb-hike-card-slider size="small">
+      <bb-hike-card size="small" *ngFor="let hike of longHikes" [hike]="hike"></bb-hike-card>
+  </bb-hike-card-slider>
+</div>

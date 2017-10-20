@@ -31,6 +31,7 @@ import { HikeCardComponent } from './hike-card/hike-card.component';
 import { HikeCardSliderComponent } from './hike-card-slider/hike-card-slider.component';
 
 
+
  
 @NgModule({
   declarations: [
