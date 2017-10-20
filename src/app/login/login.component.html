@@ -1,50 +1,25 @@
-<!-- <ol class="breadcrumb">
-  <li class="active">Login</li>
-</ol> -->
-
-<!-- <div class="figure">
-  <img src="/assets/clock.png" height="500" width="500">
-</div> -->
-
-<div class="container">
-  
-      <div class="page-header">
-          <h1>Login</h1>
-      </div>
-      <div class="well">Please login to access your dashboard.</div>
-      
-      <form role="form" novalidate (submit)="saveLoginForm(LoginForm)" #LoginForm="ngForm" class="form-horizontal">
-
-        <div class="form-group">
-          <label for="username" class="col-sm-2 control-label">Username</label>
-          <div class="col-sm-4">
-            <input formControlUsername="username" type="text" required minlength="1" name="username" class="form-control" id="username" ngModel #username="ngModel" placeholder="User Name">
-              <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
-              <div *ngIf="username.errors.required">Username is required.</div>
-              <div *ngIf="username.errors.minlength">Username should be a minimum of 1 character.</div>     
-            </div>
+ <div id="dialog" class="dialog dialog-effect-in">
+  <div class="dialog-front">
+    <div class="dialog-content">
+      <form role="form" novalidate id="login_form" class="dialog-form" action="" novalidate (submit)="saveLoginForm(LoginForm)" #LoginForm="ngForm" method="POST">
+        <fieldset>
+          <legend>Log in</legend>
+          <div class="form-group">
+            <label for="username" class="control-label">Username:</label>
+            <input type="text" id="username" class="form-control" name="username" ngModel #username="ngModel" autofocus/>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="password" class="col-sm-2 control-label">Password</label>
-          <div class="col-sm-4">
-            <input type="password" required minlength="1" name="password" class="form-control" id="password" placeholder="Password" ngModel #password="ngModel">
-              <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
-              <div *ngIf="password.errors.required">Password is required.</div>
-              <div *ngIf="password.errors.minlength">Password should be a minimum of 1 character.</div>     
-            </div>
+          <div class="form-group">
+            <label for="password" class="control-label">Password:</label>
+            <input type="password" id="password" class="form-control" name="password" ngModel #password="ngModel"/>
           </div>
-        </div>
-
-        <!-- submit button -->
-
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-6">
-            <button [disabled]="!LoginForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+          <div class="pad-top-20 pad-btm-20">
+            <button width="100%" [disabled]="!LoginForm.form.valid" type="submit" class="btn btn-default btn-block btn-lg">Continue</button>
           </div>
-        </div>
+          <div class="text-center">
+            <p>Do you wish to register<br> for <a routerLink="/signup" class="link user-actions"><strong>a new account</strong></a>?</p>
+          </div>
+        </fieldset>
       </form>
-      <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
-      
+    </div>
+  </div>
 </div>
-

@@ -1,8 +1,8 @@
 <div class="hike-image-section">
   <img class="hike-image" [src]="image">
 </div>
-<div class="hike-details">
+<div class="hike-details text-center">
   <h1><a [routerLink]="['/details/', hike.id]">{{ hike.name }}</a></h1>
-  <h2>{{ hike.distance }} miles</h2>
-  <div>{{ hike.elevation }} feet</div>
+  <h2>Distance: {{ hike.distance }} miles </h2>
+  <div>Elevation: {{ hike.elevation }} feet</div>
 </div>
