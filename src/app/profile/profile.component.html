@@ -52,6 +52,10 @@
 
 
   <h2>Completed Hikes for {{ currentUser.username }}</h2>
+  <bb-hike-card-slider>
+    <bb-hike-card *ngFor="let hike of currentUser.completedTrails" [hike]="hike"></bb-hike-card>
+  </bb-hike-card-slider>
+
   <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="completed-table" style="width:100%">
     <thead>
       <tr>
@@ -75,7 +79,10 @@
 <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
 <div>
   <h2 style="text-align:center">Wishlist Hikes for {{ currentUser.username }}</h2>
-  <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="wishlist-table" style="width:100%">
+    <bb-hike-card-slider>
+      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike"></bb-hike-card>
+    </bb-hike-card-slider>
+    <table datatable [dtOptions]="dtOptions" class="mdl-data-table table-hover" id="wishlist-table" style="width:100%">
     <thead>
       <tr>
         <th>Id (Ignore this)</th>
