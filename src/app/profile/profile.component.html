@@ -1,29 +1,36 @@
-
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 
 <!-- Grid Cards -->
-
+<div id="background">
 <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="image_text">
-          <img class="flag" src="assets/footstep.svg">
-          <h3>Miles Hiked</h3>
+  <div class="row">
+    <div class="col-md-12 align-wrapper">
+        <div>
+          <div class="card">
+            <img src="assets/footstep.svg">
+            <div class="caption">{{distanceTotal}}</div>
+            <h3>Miles Hiked</h3>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <img src="assets/mountain.png">
+            <div class="caption">{{elevationTotal}}</div>            
+            <h3>Feet Climbed</h3>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <img class="image" src="assets/hiker.png">
+            <div class="caption">{{hikeCounter}}</div>  
+            <h3>Total Hikes</h3>
+          </div>
         </div>
       </div>
-      <div class="col-md-3">
-        <div class="image_text">
-          <img class="flag" src="assets/mountain.png">
-          <h3>Feet Climbed</h3>
-        </div>
-      </div>
-      <div class="col-md-3">
-        <div class="image_text">
-          <img class="flag" src="assets/hiker.png">
-          <h3>Total Hikes</h3>
-        </div>
-      </div>
-    </div>
   </div>
+</div>
+
+<br>
 
 <!-- Line/Bar Charts -->
 
@@ -51,16 +58,16 @@
 <!-- Completed, Wishlist Hikes -->
 
 
-  <h2 class="text-center">Completed Hikes for {{ currentUser.username }}</h2>
+  <h2>Completed hikes for {{ currentUser.username }}</h2>
   <bb-hike-card-slider>
     <bb-hike-card *ngFor="let hike of currentUser.completedTrails" [hike]="hike"></bb-hike-card>
   </bb-hike-card-slider>
 </div>
 <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
 <div>
-  <h2 style="text-align:center">Wishlist Hikes for {{ currentUser.username }}</h2>
+  <h2 style="text-align:center">Wishlist hikes for {{ currentUser.username }}</h2>
     <bb-hike-card-slider>
-      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike">
-      </bb-hike-card>
+      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike"></bb-hike-card>
     </bb-hike-card-slider>
+</div>
 </div>
