@@ -18,43 +18,46 @@ export class ProfileComponent {
   successMessage: string;
   errorMessage: string;
   completedTrailsClone: any[];
+  distanceTotal: any;
+  elevationTotal: any;
+  hikeCounter = 0;
 
-  constructor(private funFastUserService: FunFastUserService, private dataService: DataService) { }
-
-  populateTables() {
-
-    //populates distance over hikes line chart
-    for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
-      this.lineChartLabels.push(this.currentUser.completedTrails[index].name)
-      this.lineChartData.push(this.currentUser.completedTrails[index].distance)
-    }
-    //populates elevation over hikes bar chart
-    for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
-      this.barChartLabels.push(this.currentUser.completedTrails[index].name)
-      this.barChartData.push(this.currentUser.completedTrails[index].elevation)
-    }
-  }
-
-
-  ngOnInit() {
-    this.currentUser = this.funFastUserService.currentUser;
-    this.populateTables();
-    // this.dtOptions = {
-
-    // };
-  }
-
-  // Distance over hikes
-  public lineChartOptions: Object = {
+   // Distance over hikes
+   public lineChartOptions: Object = {
     scales: {
       xAxes: [{
         ticks: {
           autoSkip: false
         }
       }]
+    },
+    title: {
+      display: true,
+      text: 'Distance'
+    },
+    legend: {
+      display: false
     }
   }
-  public barChartOptions: Object = this.lineChartOptions
+
+  public barChartOptions: Object = {
+    scales: {
+      xAxes: [{
+        ticks: {
+          autoSkip: false
+        }
+      }]
+    },
+    title: {
+      display: true,
+      text: 'Elevation'
+    },
+    legend: {
+      display: false
+    }
+  }
+
+  // public barChartOptions: Object = this.lineChartOptions
 
   public lineChartData: Array < any > = [];
   public lineChartLabels: Array < any > = [];
@@ -66,12 +69,13 @@ export class ProfileComponent {
   public barChartType: string = 'bar';
 
   public chartClicked(e:any):void {
-  console.log(e);
+  // console.log(e);
 }
  
   public chartHovered(e:any):void {
-  console.log(e);
+  // console.log(e);
 }
+
 
 //adds 1 hike to list of completed hikes for user
 addHikeToUser(id: number) {
@@ -84,6 +88,50 @@ private handleSuccessfulWishlistComplete(user: User) {
   this.funFastUserService.refreshUser(user);
   this.ngOnInit();
 }
+
+  constructor(private funFastUserService: FunFastUserService, private dataService: DataService) { }
+
+  populateTables() {
+
+    //populates distance over hikes
+    for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
+      this.lineChartLabels.push(this.currentUser.completedTrails[index].name)
+      this.lineChartData.push(this.currentUser.completedTrails[index].distance)
+      this.hikeCounter++; 
+    }
+    //populates elevation over hikes
+    for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
+      this.barChartLabels.push(this.currentUser.completedTrails[index].name)
+      this.barChartData.push(this.currentUser.completedTrails[index].elevation)
+    }
+  }
+
+  // roundToTwo(num) {    
+  //   return +(Math.round(num + "e+2")  + "e-2");
+  // }
+
+
+
+  //aggregates total distance from table data
+  populateDistance() {
+    this.distanceTotal = Math.ceil(this.lineChartData.reduce((acc, value) => acc + value, 0) * 100) / 100;
+  }
+
+  //aggregates total elevation from table data
+  populateElevation() {
+    this.elevationTotal = this.barChartData.reduce((acc, value) => acc + value, 0);
+  }
+
+
+
+  ngOnInit() {
+    this.currentUser = this.funFastUserService.currentUser;
+    this.populateTables();
+    this.populateDistance();
+    this.populateElevation();    
+  }
+
+
 
 deleteWishlistHike(id: number) {
   this.dataService.deleteWishlistRecord("users/trails", id)
