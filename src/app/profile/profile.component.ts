@@ -82,7 +82,7 @@ addHikeToUser(id: number) {
 }
 
 private handleSuccessfulWishlistComplete(user: User) {
-  this.successMessage = "Wishlist Hike was successfully added to complete list for user!";
+  this.successMessage = "Wishlist Hike was successfully added to complete list for user!"
   this.funFastUserService.refreshUser(user);
   this.ngOnInit();
 }
@@ -92,12 +92,16 @@ private handleSuccessfulWishlistComplete(user: User) {
   populateTables() {
 
     //populates distance over hikes
+    this.lineChartData = new Array<any>();
+    this.lineChartLabels = new Array<any>();
     for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
       this.lineChartLabels.push(this.currentUser.completedTrails[index].name)
       this.lineChartData.push(this.currentUser.completedTrails[index].distance)
       this.hikeCounter++; 
     }
     //populates elevation over hikes
+    this.barChartData = new Array<any>();
+    this.barChartLabels = new Array<any>();
     for (var index = 0; index < this.currentUser.completedTrails.length; index++) {
       this.barChartLabels.push(this.currentUser.completedTrails[index].name)
       this.barChartData.push(this.currentUser.completedTrails[index].elevation)
@@ -124,6 +128,8 @@ private handleSuccessfulWishlistComplete(user: User) {
 
   ngOnInit() {
     this.hikeCounter = 0;
+    this.distanceTotal = 0;
+    this.elevationTotal = 0;
     this.currentUser = this.funFastUserService.currentUser;
     this.populateTables();
     this.populateDistance();
