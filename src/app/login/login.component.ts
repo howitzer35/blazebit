@@ -35,14 +35,13 @@ export class LoginComponent implements OnInit {
   }
 
   saveLoginForm(signUpData: NgForm){
-    // console.log(signUpData.value);
 
     this.funFastUserService
       .login(signUpData.value.username, signUpData.value.password)
       .subscribe(
         () => {
           this.router.navigate(['home'])
-          console.log("yeah")
+          // console.log("yeah")
         },
         errorResponse => {
           console.log(errorResponse)
@@ -51,7 +50,4 @@ export class LoginComponent implements OnInit {
       );
      this.signUpData = {};
   }
-
- 
-
 }

@@ -1,16 +1,26 @@
  <div id="dialog" class="dialog dialog-effect-in">
+    
   <div class="dialog-front">
     <div class="dialog-content">
+        <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
+        
       <form role="form" novalidate id="login_form" class="dialog-form" action="" novalidate (submit)="saveLoginForm(LoginForm)" #LoginForm="ngForm" method="POST">
         <fieldset>
-          <legend>Log in</legend>
+          <legend>Login</legend>
           <div class="form-group">
             <label for="username" class="control-label">Username:</label>
-            <input type="text" id="username" class="form-control" name="username" ngModel #username="ngModel" autofocus/>
+            <input type="text" required minlength="4" id="username" class="form-control" name="username" ngModel #username="ngModel" autofocus/>
+            <div class="alert alert-danger" *ngIf="username.touched && !username.valid">
+              <div *ngIf="username.errors.required">Username is required.</div>
+              <div *ngIf="username.errors.minlength">Username should be a minimum of 4 characters.</div>
+            </div>
           </div>
           <div class="form-group">
             <label for="password" class="control-label">Password:</label>
-            <input type="password" id="password" class="form-control" name="password" ngModel #password="ngModel"/>
+            <input type="password" required id="password" class="form-control" name="password" ngModel #password="ngModel"/>
+            <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+                <div *ngIf="password.errors.required">Password is required.</div>
+            </div>  
           </div>
           <div class="pad-top-20 pad-btm-20">
             <button width="100%" [disabled]="!LoginForm.form.valid" type="submit" class="btn btn-default btn-block btn-lg">Continue</button>
