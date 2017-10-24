@@ -57,17 +57,23 @@
 
 <!-- Completed, Wishlist Hikes -->
 
+  <h2 class="text-center">Completed Hikes for {{ currentUser.username }}</h2>
 
-  <h2>Completed hikes for {{ currentUser.username }}</h2>
   <bb-hike-card-slider>
     <bb-hike-card *ngFor="let hike of currentUser.completedTrails" [hike]="hike"></bb-hike-card>
   </bb-hike-card-slider>
 </div>
 <app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
-<div>
-  <h2 style="text-align:center">Wishlist hikes for {{ currentUser.username }}</h2>
+
+<div *ngIf="currentUser.wishlistTrails.length">
+  <h2 style="text-align:center">Wishlist Hikes for {{ currentUser.username }}</h2>
     <bb-hike-card-slider>
-      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike"></bb-hike-card>
+      <bb-hike-card *ngFor="let hike of currentUser.wishlistTrails" [hike]="hike">
+        <button type="button" (click)="addHikeToUser(hike.id)" class="btn btn-sky text-uppercase btn-lg">
+            <i class="fa fa-bomb" aria-hidden="true"></i>
+        </button> 
+      </bb-hike-card>
+
     </bb-hike-card-slider>
 </div>
 </div>
