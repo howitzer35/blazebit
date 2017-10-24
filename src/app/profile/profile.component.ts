@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges } from '@angular/core';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { DataService } from '../data.service'
 import { User } from '../models/user';
@@ -74,11 +74,13 @@ export class ProfileComponent {
   // console.log(e);
 }
 
-
 //adds 1 hike to list of completed hikes for user
 addHikeToUser(id: number) {
   this.dataService.manageHikeRecord("users/trails", id)
-    .subscribe(user => this.handleSuccessfulWishlistComplete(user));
+    .subscribe(user =>{ 
+      console.error(user)
+      this.handleSuccessfulWishlistComplete(user)
+    });
 }
 
 private handleSuccessfulWishlistComplete(user: User) {
@@ -99,6 +101,7 @@ private handleSuccessfulWishlistComplete(user: User) {
       this.lineChartData.push(this.currentUser.completedTrails[index].distance)
       this.hikeCounter++; 
     }
+
     //populates elevation over hikes
     this.barChartData = new Array<any>();
     this.barChartLabels = new Array<any>();
@@ -106,13 +109,8 @@ private handleSuccessfulWishlistComplete(user: User) {
       this.barChartLabels.push(this.currentUser.completedTrails[index].name)
       this.barChartData.push(this.currentUser.completedTrails[index].elevation)
     }
+    
   }
-
-  // roundToTwo(num) {    
-  //   return +(Math.round(num + "e+2")  + "e-2");
-  // }
-
-
 
   //aggregates total distance from table data
   populateDistance() {
@@ -124,12 +122,14 @@ private handleSuccessfulWishlistComplete(user: User) {
     this.elevationTotal = this.barChartData.reduce((acc, value) => acc + value, 0);
   }
 
-
-
   ngOnInit() {
     this.hikeCounter = 0;
     this.distanceTotal = 0;
     this.elevationTotal = 0;
+    this.barChartData = [];
+    this.barChartLabels = [];
+    this.lineChartData = [];
+    this.lineChartLabels = [];
     this.currentUser = this.funFastUserService.currentUser;
     this.populateTables();
     this.populateDistance();
