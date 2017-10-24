@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FunFastUserService } from '../fun-fast-user/fun-fast-user.service';
 import { DataService } from '../data.service'
 import { User } from '../models/user';
-import { DataTablesModule } from 'angular-datatables';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +12,6 @@ import { DataTablesModule } from 'angular-datatables';
 
 export class ProfileComponent {
 
-  dtOptions: DataTables.Settings = { order: [[0, "desc"]] };
   currentUser: any;
   successMessage: string;
   errorMessage: string;

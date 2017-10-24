@@ -25,7 +25,6 @@ import { LogoutComponent } from './logout/logout.component';
 import { DetailsComponent } from './details/details.component';
 import { TrailsComponent } from './trails/trails.component';
 import { ChartsModule } from 'ng2-charts';
-import { DataTablesModule } from 'angular-datatables';
 // import { DataTableModule } from "angular2-datatable";
 import { HikeCardComponent } from './hike-card/hike-card.component';
 import { HikeCardSliderComponent } from './hike-card-slider/hike-card-slider.component';
@@ -56,9 +55,7 @@ import { HikeCardSliderComponent } from './hike-card-slider/hike-card-slider.com
     HttpModule,
     FormsModule,
     HttpClientModule,
-    ChartsModule,
-    DataTablesModule,
-    // DataTableModule
+    ChartsModule
 
   ],
   providers: [
