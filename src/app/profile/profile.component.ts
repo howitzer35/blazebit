@@ -20,7 +20,7 @@ export class ProfileComponent {
   completedTrailsClone: any[];
   distanceTotal: any;
   elevationTotal: any;
-  hikeCounter = 0;
+  hikeCounter: any;
 
    // Distance over hikes
    public lineChartOptions: Object = {
@@ -125,6 +125,7 @@ private handleSuccessfulWishlistComplete(user: User) {
 
 
   ngOnInit() {
+    this.hikeCounter = 0;
     this.currentUser = this.funFastUserService.currentUser;
     this.populateTables();
     this.populateDistance();
