@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-
 import { HomeComponent } from './home/home.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';

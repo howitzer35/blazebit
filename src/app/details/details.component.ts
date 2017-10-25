@@ -35,7 +35,19 @@ export class DetailsComponent implements OnInit {
     "/assets/hike-trails/hike7.jpg",
     "/assets/hike-trails/hike8.jpg",
     "/assets/hike-trails/hike9.jpg",
-    "/assets/hike-trails/hike10.jpg"
+    "/assets/hike-trails/hike10.jpg",
+    "/assets/hike-trails/hike11.jpg",
+    "/assets/hike-trails/hike12.jpg",
+    "/assets/hike-trails/hike13.jpg",
+    "/assets/hike-trails/hike14.jpg",
+    "/assets/hike-trails/hike15.jpg",
+    "/assets/hike-trails/hike16.jpg",
+    "/assets/hike-trails/hike17.jpg",
+    "/assets/hike-trails/hike18.jpg",
+    "/assets/hike-trails/hike19.jpg",
+    "/assets/hike-trails/hike20.jpg",
+    "/assets/hike-trails/hike21.jpg",
+    "/assets/hike-trails/hike22.jpg"
   ]
 
   randomHikeImage() {
