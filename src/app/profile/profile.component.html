@@ -34,6 +34,8 @@
 
 <!-- Line/Bar Charts -->
 
+<div *ngIf="isDataAvailable">
+    
 <div class="chartContainer">
   <canvas baseChart
     [data]="lineChartData"
@@ -52,11 +54,8 @@
     (chartHover)="chartHovered($event)"
     (chartClick)="chartClicked($event)"></canvas>
 </div>
+</div>
 <div>
-
-
-<!-- Completed, Wishlist Hikes -->
-
   <h2 class="text-center">Completed hikes for {{ currentUser.username }}</h2>
 
   <bb-hike-card-slider>
