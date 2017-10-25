@@ -13,28 +13,14 @@ export class NavigationComponent implements OnInit {
   currentUser: User;
   
 
-  // private funFastUserService: FunFastUserService;
 
   constructor(private funFastUserService: FunFastUserService, private router: Router) {
-    // this.funFastUserService = funFastUserService;
   }
 
-  // routeHome() {
-  //   this.funFastUserService
-  //   .login()
-  //   .subscribe(
-  //     // hike => this.router.navigate(['hike', hike.id])
-  //     () => this.router.navigate(['home']),
-  //     () => this.router.navigate(['home']),
-  //   );
-  // }
-
   clearLocalStorage() {
-    // console.log('hello?');
     this.funFastUserService
       .logout()
       .subscribe(
-        // hike => this.router.navigate(['hike', hike.id])
         () => this.router.navigate(['home']),
         () => this.router.navigate(['home']),
       );

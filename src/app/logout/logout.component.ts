@@ -12,7 +12,6 @@ export class LogoutComponent implements OnInit {
   currentUser: User;
 
   constructor(private funFastUserService: FunFastUserService) {
-    // this.funFastUserService = funFastUserService;
   }
   
 
