@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
-// be stuff
 import 'rxjs/add/operator/catch';
-// be stuff
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 
@@ -39,12 +36,9 @@ export class HomeComponent implements OnInit {
           this.hikeInfo = hikeInfo;
         }
       )
-      console.log(this.hikeInfo);
   }
 
   ngOnInit() {
     this.getDataFromService();
-   
   }
-
 }

@@ -70,45 +70,43 @@ export class ProfileComponent implements OnInit {
   public barChartType: string = 'bar';
 
   public chartClicked(e:any):void {
-  // console.log(e);
-}
+  }
  
   public chartHovered(e:any):void {
-  // console.log(e);
-}
-
-private LocalStorageManager = {
-  setValue: function (key, value) {
-    window.localStorage.setItem(key, JSON.stringify(value));
-  },
-  getValue: function (key) {
-    try {
-      return JSON.parse(window.localStorage.getItem(key));
-    } catch (e) {
-      return null;
-    }
-  },
-  removeValue: function(key) {
-    window.localStorage.removeItem(key);
   }
-};
 
-//adds 1 hike to list of completed hikes for user
-addHikeToUser(id: number) {
-  this.dataService.manageHikeRecord("users/trails", id)
-    .subscribe(user =>{ 
-      console.error(user)
-      this.handleSuccessfulWishlistComplete(user)
-    });
-}
+  private LocalStorageManager = {
+    setValue: function (key, value) {
+      window.localStorage.setItem(key, JSON.stringify(value));
+    },
+    getValue: function (key) {
+      try {
+        return JSON.parse(window.localStorage.getItem(key));
+      } catch (e) {
+        return null;
+      }
+    },
+    removeValue: function(key) {
+      window.localStorage.removeItem(key);
+    }
+  };
 
-private handleSuccessfulWishlistComplete(user: User) {
-  this.successMessage = "Wishlist Hike was successfully added to complete list for user!"
-  this.funFastUserService.refreshUser(user);  
-  this.sessionStorageUser = this.LocalStorageManager.getValue("user");
-  this.ngOnInit();
-  window.location.reload();  
-}
+  //adds 1 hike to list of completed hikes for user
+  addHikeToUser(id: number) {
+    this.dataService.manageHikeRecord("users/trails", id)
+      .subscribe(user =>{ 
+        console.error(user)
+        this.handleSuccessfulWishlistComplete(user)
+      });
+  }
+
+  private handleSuccessfulWishlistComplete(user: User) {
+    this.successMessage = "Wishlist Hike was successfully added to complete list for user!"
+    this.funFastUserService.refreshUser(user);  
+    this.sessionStorageUser = this.LocalStorageManager.getValue("user");
+    this.ngOnInit();
+    window.location.reload();  
+  }
 
   constructor(private funFastUserService: FunFastUserService, private dataService: DataService) { }
 
@@ -130,30 +128,7 @@ private handleSuccessfulWishlistComplete(user: User) {
       this.barChartLabels.push(this.currentUser.completedTrails[index].name)
       this.barChartData.push(this.currentUser.completedTrails[index].elevation)
     }
-    
   }
-  // populateTables() {
-    
-  //       //populates distance over hikes
-  //       // this.lineChartData = new Array<any>();
-  //       // this.lineChartLabels = new Array<any>();
-  //       for (var index = 0; index < this.sessionStorageUser.completedTrails.length; index++) {
-  //         this.lineChartLabels.push(this.sessionStorageUser.completedTrails[index].name)
-  //         this.lineChartData.push(this.sessionStorageUser.completedTrails[index].distance)
-  //         this.hikeCounter++; 
-  //       }
-    
-  //       //populates elevation over hikes
-  //       // this.barChartData = new Array<any>();
-  //       // this.barChartLabels = new Array<any>();
-  //       for (var index = 0; index < this.sessionStorageUser.completedTrails.length; index++) {
-  //         this.barChartLabels.push(this.sessionStorageUser.completedTrails[index].name)
-  //         this.barChartData.push(this.sessionStorageUser.completedTrails[index].elevation)
-  //       }
-        
-  //     }
-
-  
 
   //aggregates total distance from table data
   populateDistance() {
@@ -173,31 +148,23 @@ private handleSuccessfulWishlistComplete(user: User) {
     this.hikeCounter = 0;
     this.distanceTotal = 0;
     this.elevationTotal = 0;
-    // this.barChartData = [];
-    // this.barChartLabels = [];
-    // this.lineChartData = [];
-    // this.lineChartLabels = [];
     this.currentUser = this.funFastUserService.currentUser;
     this.populateTables();
     this.populateDistance();
     this.populateElevation();  
     this.asyncFnWithCallback();
-    // console.log(this.sessionStorageUser);
   }
 
-
-
-deleteWishlistHike(id: number) {
-  this.dataService.deleteWishlistRecord("users/trails", id)
-    .subscribe(user => this.handleSuccessfulWishDelete(user));
-}
+  deleteWishlistHike(id: number) {
+    this.dataService.deleteWishlistRecord("users/trails", id)
+      .subscribe(user => this.handleSuccessfulWishDelete(user));
+  }
 
   private handleSuccessfulWishDelete(user: User) {
-  this.successMessage = "Wishlist Hike was successfully deleted for user!";
-  this.funFastUserService.refreshUser(user);
-  this.ngOnInit();
-}
-
+    this.successMessage = "Wishlist Hike was successfully deleted for user!";
+    this.funFastUserService.refreshUser(user);
+    this.ngOnInit();
+  }
 }
 
 
